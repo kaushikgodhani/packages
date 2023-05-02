@@ -227,9 +227,9 @@ final class VideoPlayer {
           @Override
           public void onPlayerError(final PlaybackException error) {
             setBuffering(false);
-            if (eventSink != null) {
-              eventSink.error("VideoError", "Video player had error " + error, null);
-            }
+//             if (eventSink != null) {
+//               eventSink.error("VideoError", "Video player had error " + error, null);
+//             }
           }
 
           @Override
