@@ -226,10 +226,26 @@ final class VideoPlayer {
 
           @Override
           public void onPlayerError(final PlaybackException error) {
-            setBuffering(false);
+//             setBuffering(false);
 //             if (eventSink != null) {
 //               eventSink.error("VideoError", "Video player had error " + error, null);
 //             }
+            switch (error.type) {
+            case ExoPlaybackException.TYPE_SOURCE:
+                Log.e(TAG, "TYPE_SOURCE: " + error.getSourceException().getMessage());
+                break;
+
+            case ExoPlaybackException.TYPE_RENDERER:
+                Log.e(TAG, "TYPE_RENDERER: " + error.getRendererException().getMessage());
+                break;
+
+            case ExoPlaybackException.TYPE_UNEXPECTED:
+                Log.e(TAG, "TYPE_UNEXPECTED: " + error.getUnexpectedException().getMessage());
+                break;
+        }
+            
+            
+            
           }
 
           @Override
